@@ -1,7 +1,8 @@
 import Layout from "../components/MyLayout";
 import Link from "next/link";
+import initStore from '../store/initStore';
 
-function getPosts() {
+function getTheaters() {
   return [
     { id: "cgv", title: "CGV" },
     { id: "megabox", title: "MEGABOX" },
@@ -13,7 +14,7 @@ export default () => (
   <Layout>
     <h1>EasyMovieSearch</h1>
     <ul>
-      {getPosts().map(theater => (
+      {getTheaters().map(theater => (
         <li key={theater.id}>
           <Link as={`/${theater.id}`} href={`/theater?title=${theater.title}`}>
             <a>{theater.title}</a>
