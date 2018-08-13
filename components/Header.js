@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "../../../../../Library/Caches/typescript/2.9/node_modules/@types/next/link";
 
 const linkStyle = {
   marginRight: 15

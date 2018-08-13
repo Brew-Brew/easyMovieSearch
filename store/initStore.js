@@ -7,7 +7,7 @@ const messages = [
 let store = null;
 
 class Store {
-   // @observable =Message = ''
+    @observable Message = ''
 
     constructor() {
         this.Message = messages[0];
