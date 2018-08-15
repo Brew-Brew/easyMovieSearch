@@ -1,25 +1,19 @@
 import { observable,action } from 'mobx';
+import theater from '../pages/theater';
 
-const messages = [
-    "nice to have you here",
-];
 
 let store = null;
 
 class Store {
-    @observable Message = ''
+    @observable theater = ''
 
     constructor() {
-        this.Message = messages[0];
+        this.theater = [
+            { id: "cgv", title: "CGV" },
+            { id: "megabox", title: "MEGA BOX" },
+            { id: "lotte-cinema", title: "LOTTE CINEMA" }
+          ];
     }
-
-    @action start = () => {
-        this.timer = setInterval(() => {
-            this.helloMessage = messages[0];
-        }, 10000);
-    }
-
-    stop = () => clearInterval(this.timer)
 }
 
 export default function initStore() {

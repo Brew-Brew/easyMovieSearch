@@ -1,24 +1,22 @@
 import Layout from "../components/MyLayout";
 import Link from "next/link";
 import initStore from "../store/initStore"
-function getTheaters() {
-  return [
-    { id: "cgv", title: "CGV" },
-    { id: "megabox", title: "MEGABOX" },
-    { id: "lotte-cinema", title: "LOTTE CINEMA" }
-  ];
-}
+import {Provider} from "mobx-react"
+
 const store = initStore();
+console.log(store.theater);
 export default () => (
   <Layout>
     <h1>EasyMovieSearch</h1>
     <ul>
-      {getTheaters().map(theater => (
-        <li key={theater.id}>
-          <Link as={`/${theater.id}`} href={`/theater?title=${theater.title}`}>
-            <a>{theater.title}</a>
-          </Link>
-        </li>
+      {store.theater.map(theater => (
+         <Provider BaseStore={store}>
+          <li key={theater.id}>
+            <Link as={`/${theater.id}`} href={`/theater?title=${theater.title}`}>
+              <a>{theater.title}</a>
+            </Link>
+          </li>
+        </Provider>
       ))}
     </ul>
     <style jsx>{`
