@@ -42077,6 +42077,16 @@ var store = Object(__WEBPACK_IMPORTED_MODULE_4__store_initStore__["a" /* default
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mobx__ = __webpack_require__("./node_modules/mobx/lib/mobx.module.js");
 var _desc, _value, _class, _descriptor, _descriptor2;
 
+function _initDefineProp(target, property, descriptor, context) {
+  if (!descriptor) return;
+  Object.defineProperty(target, property, {
+    enumerable: descriptor.enumerable,
+    configurable: descriptor.configurable,
+    writable: descriptor.writable,
+    value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+  });
+}
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
@@ -42120,26 +42130,14 @@ var Store = (_class = function Store() {
 
   _classCallCheck(this, Store);
 
-  Object.defineProperty(this, "Message", {
-    configurable: true,
-    enumerable: true,
-    writable: true,
-    value: _initializerWarningHelper(_descriptor, this)
-  });
-  Object.defineProperty(this, "start", {
-    configurable: true,
-    enumerable: true,
-    writable: true,
-    value: _initializerWarningHelper(_descriptor2, this)
-  });
-  Object.defineProperty(this, "stop", {
-    configurable: true,
-    enumerable: true,
-    writable: true,
-    value: function value() {
-      return clearInterval(_this.timer);
-    }
-  });
+  _initDefineProp(this, "Message", _descriptor, this);
+
+  _initDefineProp(this, "start", _descriptor2, this);
+
+  this.stop = function () {
+    return clearInterval(_this.timer);
+  };
+
   this.Message = messages[0];
 }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "Message", [__WEBPACK_IMPORTED_MODULE_0_mobx__["b" /* observable */]], {
   enumerable: true,

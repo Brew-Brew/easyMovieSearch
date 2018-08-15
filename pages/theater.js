@@ -1,6 +1,5 @@
 import Layout from "../components/MyLayout.js";
 
-@inject('BaseStore') @observer
 export default props => (
   <Layout>
     <h1>{props.url.query.title}</h1>
