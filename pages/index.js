@@ -1,6 +1,5 @@
 import Layout from "../components/MyLayout";
 import Link from "next/link";
-import initStore from '../store/initStore';
 
 function getTheaters() {
   return [
