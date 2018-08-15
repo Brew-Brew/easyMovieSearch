@@ -1,6 +1,6 @@
 import Layout from "../components/MyLayout";
 import Link from "next/link";
-
+import initStore from "../store/initStore"
 function getTheaters() {
   return [
     { id: "cgv", title: "CGV" },
@@ -8,7 +8,7 @@ function getTheaters() {
     { id: "lotte-cinema", title: "LOTTE CINEMA" }
   ];
 }
-
+const store = initStore();
 export default () => (
   <Layout>
     <h1>EasyMovieSearch</h1>
