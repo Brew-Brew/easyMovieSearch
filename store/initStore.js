@@ -1,18 +1,12 @@
-import { observable,action } from 'mobx';
-import theater from '../pages/theater';
-
-
-let store = null;
+import { observable } from 'mobx';
 
 class Store {
-    @observable theater = ''
-
     constructor() {
-        this.theater = [
+        this.theater = observable([
             { id: "cgv", title: "CGV" },
             { id: "megabox", title: "MEGA BOX" },
             { id: "lotte-cinema", title: "LOTTE CINEMA" }
-          ];
+          ]);
     }
 }
 
