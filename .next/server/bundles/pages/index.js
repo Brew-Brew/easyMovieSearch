@@ -224,6 +224,8 @@ var store = Object(__WEBPACK_IMPORTED_MODULE_4__store_initStore__["a" /* default
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_mobx_react__ = __webpack_require__("mobx-react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_mobx_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_mobx_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_mobx_react_devtools__ = __webpack_require__("mobx-react-devtools");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_mobx_react_devtools___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_mobx_react_devtools__);
 var _dec,
     _class,
     _jsxFileName = "/Users/seungyu2/Desktop/develop/react/easyMovieSearch/pages/theater.js";
@@ -241,6 +243,7 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 
 
 
@@ -279,7 +282,7 @@ function (_Component) {
       var _this2 = this;
 
       this.getArea().then(function (location) {
-        return _this2.setState(location);
+        return _this2.props.BaseStore.initLocation(location);
       });
     }
   }, {
@@ -290,31 +293,36 @@ function (_Component) {
       return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 25
+          lineNumber: 26
         }
       }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("h4", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 26
+          lineNumber: 27
         }
       }, "\uC601\uD654\uAD00"), BaseStore.theater.map(function (val) {
         return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("p", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 27
+            lineNumber: 28
           }
         }, val.title);
       }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("p", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 28
-        }
-      }, "\uC704\uB3C4: ", this.state.latitude), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("p", {
-        __source: {
-          fileName: _jsxFileName,
           lineNumber: 29
         }
-      }, "\uACBD\uB3C4: ", this.state.longitude));
+      }, "\uC704\uB3C4: ", BaseStore.location.latitude), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("p", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 30
+        }
+      }, "\uACBD\uB3C4: ", BaseStore.location.longitude), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3_mobx_react_devtools___default.a, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 31
+        }
+      }));
     }
   }]);
 
@@ -331,12 +339,58 @@ function (_Component) {
 /* harmony export (immutable) */ __webpack_exports__["a"] = initStore;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mobx__ = __webpack_require__("mobx");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_mobx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_mobx__);
+var _desc, _value, _class, _descriptor;
+
+function _initDefineProp(target, property, descriptor, context) {
+  if (!descriptor) return;
+  Object.defineProperty(target, property, {
+    enumerable: descriptor.enumerable,
+    configurable: descriptor.configurable,
+    writable: descriptor.writable,
+    value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+  });
+}
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+  var desc = {};
+  Object['ke' + 'ys'](descriptor).forEach(function (key) {
+    desc[key] = descriptor[key];
+  });
+  desc.enumerable = !!desc.enumerable;
+  desc.configurable = !!desc.configurable;
+
+  if ('value' in desc || desc.initializer) {
+    desc.writable = true;
+  }
+
+  desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+    return decorator(target, property, desc) || desc;
+  }, desc);
+
+  if (context && desc.initializer !== void 0) {
+    desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+    desc.initializer = undefined;
+  }
+
+  if (desc.initializer === void 0) {
+    Object['define' + 'Property'](target, property, desc);
+    desc = null;
+  }
+
+  return desc;
+}
+
+function _initializerWarningHelper(descriptor, context) {
+  throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+}
 
 
-var Store = function Store() {
+var Store = (_class = function Store() {
   _classCallCheck(this, Store);
+
+  _initDefineProp(this, "initLocation", _descriptor, this);
 
   this.theater = Object(__WEBPACK_IMPORTED_MODULE_0_mobx__["observable"])([{
     id: "cgv",
@@ -348,8 +402,20 @@ var Store = function Store() {
     id: "lotte-cinema",
     title: "LOTTE CINEMA"
   }]);
-};
+  this.location = Object(__WEBPACK_IMPORTED_MODULE_0_mobx__["observable"])({
+    latitude: null,
+    longitude: null
+  });
+}, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "initLocation", [__WEBPACK_IMPORTED_MODULE_0_mobx__["action"]], {
+  enumerable: true,
+  initializer: function initializer() {
+    var _this = this;
 
+    return function (data) {
+      _this.location = data;
+    };
+  }
+})), _class);
 function initStore() {
   return new Store();
 }
@@ -375,6 +441,13 @@ module.exports = require("mobx");
 /***/ (function(module, exports) {
 
 module.exports = require("mobx-react");
+
+/***/ }),
+
+/***/ "mobx-react-devtools":
+/***/ (function(module, exports) {
+
+module.exports = require("mobx-react-devtools");
 
 /***/ }),
 

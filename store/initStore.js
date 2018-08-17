@@ -1,4 +1,4 @@
-import { observable } from 'mobx';
+import { observable, action } from 'mobx';
 
 class Store {
     constructor() {
@@ -7,6 +7,12 @@ class Store {
             { id: "megabox", title: "MEGA BOX" },
             { id: "lotte-cinema", title: "LOTTE CINEMA" }
           ]);
+        this.location=observable({latitude: null,longitude: null});
+    }
+
+    @action
+    initLocation=(data)=>{
+        this.location=data;
     }
 }
 

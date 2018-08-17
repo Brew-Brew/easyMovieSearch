@@ -1,6 +1,7 @@
 import Layout from "../components/MyLayout";
 import React, { Component } from "react";
 import {inject, observer} from "mobx-react"
+import DevTools from 'mobx-react-devtools'
 
 @inject('BaseStore') @observer
 class Theater extends Component {
@@ -16,7 +17,7 @@ class Theater extends Component {
   });
   }
   componentDidMount(){
-    this.getArea().then((location)=>this.setState(location));
+    this.getArea().then((location)=>this.props.BaseStore.initLocation(location));
   }
   render(){
     const {BaseStore}=this.props;
@@ -25,8 +26,9 @@ class Theater extends Component {
       <div>
         <h4>영화관</h4>
         {BaseStore.theater.map((val)=> <p>{val.title}</p>)}
-        <p>위도: {this.state.latitude}</p>
-        <p>경도: {this.state.longitude}</p>
+        <p>위도: {BaseStore.location.latitude}</p>
+        <p>경도: {BaseStore.location.longitude}</p>
+        <DevTools />
       </div>
       
     )
