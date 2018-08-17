@@ -43256,6 +43256,50 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./pages/about.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("./node_modules/react/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+var _jsxFileName = "/Users/seungyu2/Desktop/develop/react/easyMovieSearch/pages/about.js";
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 2
+    }
+  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 3
+    }
+  }, "This is about page"));
+});
+    (function (Component, route) {
+      if(!Component) return
+      if (false) return
+      module.hot.accept()
+      Component.__route = route
+
+      if (module.hot.status() === 'idle') return
+
+      var components = next.router.components
+      for (var r in components) {
+        if (!components.hasOwnProperty(r)) continue
+
+        if (components[r].Component.__route === route) {
+          next.router.update(r, Component)
+        }
+      }
+    })(typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__.default : (module.exports.default || module.exports), "/about")
+  
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/webpack/buildin/harmony-module.js")(module)))
+
+/***/ }),
+
 /***/ "./pages/index.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -43352,9 +43396,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 
 
@@ -43365,12 +43409,38 @@ function (_Component) {
   _inherits(Theater, _Component);
 
   function Theater(props) {
+    var _this;
+
     _classCallCheck(this, Theater);
 
-    return _possibleConstructorReturn(this, (Theater.__proto__ || Object.getPrototypeOf(Theater)).call(this, props));
+    _this = _possibleConstructorReturn(this, (Theater.__proto__ || Object.getPrototypeOf(Theater)).call(this, props));
+    _this.state = {};
+    _this.getArea = _this.getArea.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(Theater, [{
+    key: "getArea",
+    value: function getArea() {
+      return new Promise(function (resolve, reject) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          resolve({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude
+          });
+        });
+      });
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.getArea().then(function (location) {
+        return _this2.setState(location);
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var BaseStore = this.props.BaseStore;
@@ -43378,21 +43448,31 @@ function (_Component) {
       return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("div", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 14
+          lineNumber: 25
         }
       }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("h4", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 15
+          lineNumber: 26
         }
       }, "\uC601\uD654\uAD00"), BaseStore.theater.map(function (val) {
         return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("p", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 16
+            lineNumber: 27
           }
         }, val.title);
-      }));
+      }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("p", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 28
+        }
+      }, "\uC704\uB3C4: ", this.state.latitude), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("p", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 29
+        }
+      }, "\uACBD\uB3C4: ", this.state.longitude));
     }
   }]);
 
