@@ -25,9 +25,9 @@ class Theater extends Component {
     return (
       <div>
         <h4>영화관</h4>
-        {BaseStore.theater.map((val)=> <p>{val.title}</p>)}
-        <p>위도: {BaseStore.location.latitude}</p>
-        <p>경도: {BaseStore.location.longitude}</p>
+        {BaseStore.data.theater.map((val)=> <p>{val.title}</p>)}
+        <p>위도: { BaseStore.data.location.latitude}</p>
+        <p>경도: {BaseStore.data.location.longitude}</p>
         <DevTools />
       </div>
       

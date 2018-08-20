@@ -2,17 +2,17 @@ import { observable, action } from 'mobx';
 
 class Store {
     constructor() {
-        this.theater = observable([
+        this.data = observable({theater:[
             { id: "cgv", title: "CGV" },
             { id: "megabox", title: "MEGA BOX" },
             { id: "lotte-cinema", title: "LOTTE CINEMA" }
-          ]);
-        this.location=observable({latitude: null,longitude: null});
+          ],location: {}});
     }
 
     @action
     initLocation=(data)=>{
-        this.location=data;
+        console.log(data);
+        this.data.location={...data};
     }
 }
 
