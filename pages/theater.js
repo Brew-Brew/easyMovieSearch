@@ -2,7 +2,8 @@ import Layout from "../components/MyLayout";
 import React, { Component } from "react";
 import {inject, observer} from "mobx-react"
 import DevTools from 'mobx-react-devtools'
-
+import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
 
 @inject('BaseStore') @observer
 class Theater extends Component {
@@ -27,10 +28,9 @@ class Theater extends Component {
     return (
       <div>
         <h4>영화관</h4>
-        {BaseStore.data.theater.map((val)=> <p>{val.title}</p>)}
+        {BaseStore.data.theater.map((val)=><Button variant="outlined" color="primary" >{val.title}</Button>)}
         <p>위도: { BaseStore.data.location.latitude}</p>
         <p>경도: {BaseStore.data.location.longitude}</p>
-        
         <DevTools />
         <style jsx>{`
      #map{

@@ -1,14 +1,15 @@
-import Layout from "../components/MyLayout";
 import Link from "next/link";
-import initStore from "../store/initStore"
 import {Provider} from "mobx-react"
-import Theater from "./theater";
 import Head from 'next/head'
+import Card from '@material-ui/core/Card';
 
+import Theater from "./theater";
+import initStore from "../store/initStore"
+import Layout from "../components/MyLayout";
 const store = initStore();
 
 export default () => (
-  <Layout>
+  <Card>
     <Head>
       <title>Easy search movie </title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
@@ -37,5 +38,5 @@ export default () => (
         opacity: 0.6;
       }
     `}</style>
-  </Layout>
+  </Card>
 );
