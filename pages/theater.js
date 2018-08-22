@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import {inject, observer} from "mobx-react"
 import DevTools from 'mobx-react-devtools'
 
+
 @inject('BaseStore') @observer
 class Theater extends Component {
   constructor(props){
@@ -16,6 +17,7 @@ class Theater extends Component {
     })
   });
   }
+
   componentDidMount(){
     this.getArea().then((location)=>this.props.BaseStore.initLocation(location));
   }
@@ -28,7 +30,13 @@ class Theater extends Component {
         {BaseStore.data.theater.map((val)=> <p>{val.title}</p>)}
         <p>위도: { BaseStore.data.location.latitude}</p>
         <p>경도: {BaseStore.data.location.longitude}</p>
+        
         <DevTools />
+        <style jsx>{`
+     #map{
+       width: 400px
+     }
+    `}</style>
       </div>
       
     )
