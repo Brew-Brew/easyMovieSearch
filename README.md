@@ -23,7 +23,8 @@ https://brunch.co.kr/@hee072794/81 참고
 
 ## 스타일링
 
-- styled-jsx
+- material ui 활용
+- material ui의 withStyles hoc 활용
 
 ### Mobx
 https://blog.mvp-space.com/next-js-meets-firebase-and-mobx-b3ae90d5b879 참고
