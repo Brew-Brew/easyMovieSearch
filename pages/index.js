@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {Provider} from "mobx-react"
 import Head from 'next/head'
 import Card from '@material-ui/core/Card';
@@ -12,6 +11,7 @@ export default () => (
     <Head>
       <title>Easy search movie </title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
+      <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=1sLlNgzz6o0MYsjq4xPb"></script>
     </Head>
     <Header/>
       <h1>EasyMovieSearch</h1>

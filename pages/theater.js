@@ -11,11 +11,10 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
   card: {
-    maxWidth: 345,
+    margin: 10
   },
   contentCard:{
-    maxWidth: 345,
-    marginTop: 10,
+    margin: 10,
   }
 };
 
@@ -26,6 +25,7 @@ class Theater extends Component {
     super(props);
     this.state={};
     this.getArea=this.getArea.bind(this);
+    
   }
   getArea(){
     return new Promise(function (resolve, reject){ navigator.geolocation.getCurrentPosition( function (position) {
@@ -34,7 +34,25 @@ class Theater extends Component {
   });
   }
 
+  shouldComponentUpdate(nextProps, nextState){
+    if(nextProps.BaseStore.location){
+      console.log('!!')
+      var mapOptions = {
+          center: new naver.maps.LatLng(nextProps.BaseStore.location.latitude, nextProps.BaseStore.location.longitude),
+          zoom: 10
+      };
+      var map = new naver.maps.Map('map', mapOptions);
+      return true;
+    }
+    
+    return true;
+  }
   componentDidMount(){
+      var mapOptions = {
+        center: new naver.maps.LatLng(37.3595704, 127.105399),
+        zoom: 10
+    };
+    var map = new naver.maps.Map('map', mapOptions);
     this.getArea().then((location)=>this.props.BaseStore.initLocation(location));
   }
   render(){
@@ -55,24 +73,20 @@ class Theater extends Component {
               현재 위치
             </Typography>
             <CardActions>
-            <Button size="small" color="primary">
-            { BaseStore.data.location.latitude}
-            </Button>
-            <Button size="small" color="primary">
-            {BaseStore.data.location.longitude}
-            </Button>
+            <div id="map" style={{width:"100%",height: "400px"}}></div>
           </CardActions>
             <Typography component="p">
               현재 위치기반 가까운 영화관
+              <Button size="small" color="primary">
+              { BaseStore.data.location.latitude}
+             </Button>
+              <Button size="small" color="primary">
+                {BaseStore.data.location.longitude}
+             </Button>
             </Typography>
           </CardContent>
         </Card>
         <DevTools />
-        <style jsx>{`
-     #map{
-       width: 400px
-     }
-    `}</style>
       </div>
       
     )
