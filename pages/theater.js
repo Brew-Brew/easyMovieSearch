@@ -23,7 +23,7 @@ class Theater extends Component {
   
   constructor(props){
     super(props);
-    this.state={};
+    this.state={ };
     this.getArea=this.getArea.bind(this);
     
   }
@@ -34,26 +34,17 @@ class Theater extends Component {
   });
   }
 
-  shouldComponentUpdate(nextProps, nextState){
-    if(nextProps.BaseStore.location){
-      console.log('!!')
-      var mapOptions = {
-          center: new naver.maps.LatLng(nextProps.BaseStore.location.latitude, nextProps.BaseStore.location.longitude),
-          zoom: 10
-      };
-      var map = new naver.maps.Map('map', mapOptions);
-      return true;
-    }
-    
-    return true;
-  }
+
   componentDidMount(){
-      var mapOptions = {
-        center: new naver.maps.LatLng(37.3595704, 127.105399),
-        zoom: 10
-    };
-    var map = new naver.maps.Map('map', mapOptions);
     this.getArea().then((location)=>this.props.BaseStore.initLocation(location));
+  }
+  componentDidUpdate(nextProps){
+    const { BaseStore }=this.props;
+    var mapOptions = {
+      center: new naver.maps.LatLng(nextProps.BaseStore.data.location.latitude, nextProps.BaseStore.data.location.longitude),
+      zoom: 10
+  };
+  var map = new naver.maps.Map('map', mapOptions);
   }
   render(){
     const { classes } = this.props;
