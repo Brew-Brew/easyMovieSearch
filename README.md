@@ -28,3 +28,6 @@ https://brunch.co.kr/@hee072794/81 참고
 
 ### Mobx
 https://blog.mvp-space.com/next-js-meets-firebase-and-mobx-b3ae90d5b879 참고
+
+## API
+- 적절한 open api가 많지 않아, 크롤링 할 예정
