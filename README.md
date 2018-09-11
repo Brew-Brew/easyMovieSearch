@@ -30,4 +30,5 @@ https://brunch.co.kr/@hee072794/81 참고
 https://blog.mvp-space.com/next-js-meets-firebase-and-mobx-b3ae90d5b879 참고
 
 ## API
-- 적절한 open api가 많지 않아, 크롤링 할 예정
+- 지도: naver map api 사용
+- 영화데이터: 적절한 open api가 많지 않아, 크롤링 할 예정
