@@ -3,6 +3,15 @@
       "next/babel"
     ],
     "plugins": [
-      "transform-decorators-legacy","transform-class-properties"
+      "transform-decorators-legacy",
+      "transform-class-properties",    
+      [
+        "babel-plugin-styled-components", 
+        {
+          "ssr": true, 
+          "displayName": true, 
+          "preprocess": false 
+        }
+      ]
     ]
   }

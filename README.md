@@ -24,7 +24,7 @@ https://brunch.co.kr/@hee072794/81 참고
 ## 스타일링
 
 - material ui 활용
-- material ui의 withStyles hoc 활용
+- styled component 활용 (코드를 최대한 한 파일안에서 볼수 있게 하기 위해서)
 
 ### Mobx
 https://blog.mvp-space.com/next-js-meets-firebase-and-mobx-b3ae90d5b879 참고

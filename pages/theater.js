@@ -7,15 +7,15 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
+import styled from 'styled-components';
 
-const styles = {
-  card: {
-    margin: 10
-  },
-  contentCard:{
-    margin: 10,
-  }
-};
+const HeaderWrapper = styled.div`
+  margin: 10px;
+`;
+
+const ContentWrapper = styled.div`
+  margin: 10px;
+`;
 
 @inject('BaseStore') @observer
 class Theater extends Component {
@@ -50,32 +50,35 @@ class Theater extends Component {
     const { BaseStore }=this.props;
     return (
       <div>
-         <Card className={classes.card}>
+        <HeaderWrapper>
+         <Card>
          <CardContent>
           <h4>영화관</h4>
           {BaseStore.data.theater.map((val)=><Button variant="outlined" color="primary" >{val.title}</Button>)}
           </CardContent>
          </Card>
-       
-        <Card className={classes.contentCard}>
-          <CardContent>
-            <Typography gutterBottom variant="headline" component="h2">
-              현재 위치
-            </Typography>
-            <CardActions>
-            <div id="map" style={{width:"100%",height: "400px"}}></div>
-          </CardActions>
-            <Typography component="p">
-              현재 위치기반 가까운 영화관
-              <Button size="small" color="primary">
-              { BaseStore.data.location.latitude}
-             </Button>
-              <Button size="small" color="primary">
-                {BaseStore.data.location.longitude}
-             </Button>
-            </Typography>
-          </CardContent>
-        </Card>
+        </HeaderWrapper>
+        <ContentWrapper>
+          <Card>
+            <CardContent>
+              <Typography gutterBottom variant="headline" component="h2">
+                현재 위치
+              </Typography>
+              <CardActions>
+              <div id="map" style={{width:"100%",height: "400px"}}></div>
+            </CardActions>
+              <Typography component="p">
+                현재 위치기반 가까운 영화관
+                <Button size="small" color="primary">
+                { BaseStore.data.location.latitude}
+              </Button>
+                <Button size="small" color="primary">
+                  {BaseStore.data.location.longitude}
+              </Button>
+              </Typography>
+            </CardContent>
+          </Card>
+        </ContentWrapper>
         <DevTools />
       </div>
       
@@ -83,5 +86,5 @@ class Theater extends Component {
   }
 }
 
-export default withStyles(styles)(Theater);
+export default Theater;
 
