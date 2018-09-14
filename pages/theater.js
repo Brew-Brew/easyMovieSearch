@@ -6,7 +6,6 @@ import Button from '@material-ui/core/Button';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
 
 const HeaderWrapper = styled.div`
@@ -42,8 +41,12 @@ class Theater extends Component {
     var mapOptions = {
       center: new naver.maps.LatLng(nextProps.BaseStore.data.location.latitude, nextProps.BaseStore.data.location.longitude),
       zoom: 10
-  };
-  var map = new naver.maps.Map('map', mapOptions);
+       };
+    var map = new naver.maps.Map('map', mapOptions);
+    var marker = new naver.maps.Marker({
+      position: new naver.maps.LatLng(mapOptions.center),
+      map: map
+      });
   }
   render(){
     const { classes } = this.props;
