@@ -8,6 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
 
+
 const HeaderWrapper = styled.div`
   margin: 10px;
 `;
@@ -36,6 +37,7 @@ class Theater extends Component {
   componentDidMount(){
     this.getArea().then((location)=>this.props.BaseStore.initLocation(location));
   }
+
   componentDidUpdate(nextProps){
     const { BaseStore }=this.props;
     var mapOptions = {
@@ -48,6 +50,7 @@ class Theater extends Component {
       map: map
       });
   }
+
   render(){
     const { classes } = this.props;
     const { BaseStore }=this.props;
