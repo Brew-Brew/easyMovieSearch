@@ -37,8 +37,16 @@ class Theater extends Component {
   }
   
   getTheaterInfo = async()=>{
+    const { BaseStore }=this.props;
+    const {data} = BaseStore;
+    const { location} = data;
     const formData = new FormData();
-    formData.append('paramList', JSON.stringify({"MethodName":"SpecialCinemaList","channelType":"HO","osType":"Chrome","osVersion":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36","DetailDivisionCode":"0300","Latitude":"37.5675451","Longitude":"126.9773356"}));
+    formData.append(
+      'paramList', JSON.stringify(
+        {"MethodName":"GetCinemaItems",
+        "channelType":"HO",
+        "osType":"Chrome",
+        "osVersion":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36"}));
     const result = await getTheater(formData);
     console.log(result.data.Cinemas.Items);
     this.props.BaseStore.getNearCinemas(result.data.Cinemas.Items);
@@ -64,10 +72,9 @@ class Theater extends Component {
   }
 
   render(){
-    const { classes } = this.props;
     const { BaseStore }=this.props;
     const {data} = BaseStore;
-    const { theater, nearCinemas } = data;
+    const { theater, nearCinemas, location } = data;
     console.log(nearCinemas);
     return (
       <div>
@@ -90,7 +97,7 @@ class Theater extends Component {
             </CardActions>
               <Typography component="p">
                 <h2>현재 위치기반 가까운 영화관</h2>
-                <h4>현재위치 { BaseStore.data.location.latitude},{BaseStore.data.location.longitude}</h4>
+                <h4>현재위치 { location.latitude},{location.longitude}</h4>
                 {nearCinemas.map((cinema) => {
                   return( <div>
                    <h5>{cinema.CinemaNameKR}({cinema.CinemaNameUS})</h5>
