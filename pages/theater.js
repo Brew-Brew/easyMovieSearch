@@ -46,7 +46,7 @@ class Theater extends Component {
         {"MethodName":"GetCinemaItems",
         "channelType":"HO",
         "osType":"Chrome",
-        "osVersion":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36"}));
+        "osVersion":""}));
     const result = await getTheater(formData);
     console.log(result.data.Cinemas.Items);
     this.props.BaseStore.getNearCinemas(result.data.Cinemas.Items);
@@ -75,7 +75,7 @@ class Theater extends Component {
     const { BaseStore }=this.props;
     const {data} = BaseStore;
     const { theater, nearCinemas, location } = data;
-    console.log(nearCinemas);
+    console.log(data);
     return (
       <div>
         <HeaderWrapper>
