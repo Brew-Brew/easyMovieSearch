@@ -66,14 +66,16 @@ class Theater extends Component {
   render(){
     const { classes } = this.props;
     const { BaseStore }=this.props;
-    
+    const {data} = BaseStore;
+    const { theater, nearCinemas } = data;
+    console.log(nearCinemas);
     return (
       <div>
         <HeaderWrapper>
          <Card>
          <CardContent>
           <h4>영화관</h4>
-          {BaseStore.data.theater.map((val)=><Button variant="outlined" color="primary" >{val.title}</Button>)}
+          {theater.map((val)=><Button variant="outlined" color="primary" >{val.title}</Button>)}
           </CardContent>
          </Card>
         </HeaderWrapper>
@@ -87,13 +89,15 @@ class Theater extends Component {
               <div id="map" style={{width:"100%",height: "400px"}}></div>
             </CardActions>
               <Typography component="p">
-                현재 위치기반 가까운 영화관
-                <Button size="small" color="primary">
-                { BaseStore.data.location.latitude}
-              </Button>
-                <Button size="small" color="primary">
-                  {BaseStore.data.location.longitude}
-              </Button>
+                <h2>현재 위치기반 가까운 영화관</h2>
+                <h4>현재위치 { BaseStore.data.location.latitude},{BaseStore.data.location.longitude}</h4>
+                {nearCinemas.map((cinema) => {
+                  return( <div>
+                   <h5>{cinema.CinemaNameKR}({cinema.CinemaNameUS})</h5>
+                   <p>{cinema.Latitude},{cinema.Longitude}</p>
+                 </div>)
+                })}
+
               </Typography>
             </CardContent>
           </Card>
