@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {inject, observer} from "mobx-react";
 import DevTools from 'mobx-react-devtools';
 import FormData from 'form-data';
+import _ from 'lodash';
 
 import {getTheater} from '../util/api';
 import Card from '@material-ui/core/Card';
@@ -64,8 +65,9 @@ class Theater extends Component {
         "osType":"Chrome",
         "osVersion":""}));
     const result = await getTheater(formData);
-    if(result.data.Cinemas.Items){
-    this.props.BaseStore.getNearCinemas(this.sortTheater(result.data.Cinemas.Items));
+    const filteredCinema = (Object.values((result.data.Cinemas.Items).reduce((acc,cur)=>Object.assign(acc,{[cur.CinemaName]:cur}),{})))
+    if(filteredCinema){
+    this.props.BaseStore.getNearCinemas(this.sortTheater(filteredCinema));
     }
   }
 
@@ -89,14 +91,14 @@ class Theater extends Component {
   }
 
   sortTheater = (nearCinemas) => {
+    console.log(nearCinemas);
     const { BaseStore }=this.props;
     const {data} = BaseStore;
     const { location } = data;
     nearCinemas.forEach((cinema)=>{
         cinema.Distance=(this.getDistance(location.latitude,location.longitude,cinema.Latitude,cinema.Longitude,"K"));
        });
-      
-       return(nearCinemas.sort((a,b)=> a.Distance-b.Distance));
+    return(nearCinemas.sort((a,b)=> a.Distance-b.Distance));
   }
 
   render(){
