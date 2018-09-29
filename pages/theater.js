@@ -38,7 +38,7 @@ class Theater extends Component {
   
   getTheaterInfo = async()=>{
     const formData = new FormData();
-    formData.append('paramList', {"MethodName":"SpecialCinemaList","channelType":"HO","osType":"Chrome","osVersion":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36","DetailDivisionCode":"0300","Latitude":"37.5675451","Longitude":"126.9773356"});
+    formData.append('paramList', JSON.stringify({"MethodName":"SpecialCinemaList","channelType":"HO","osType":"Chrome","osVersion":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36","DetailDivisionCode":"0300","Latitude":"37.5675451","Longitude":"126.9773356"}));
     const data = await getTheater(formData);
     console.log(data);
   }
