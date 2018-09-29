@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import {inject, observer} from "mobx-react";
 import DevTools from 'mobx-react-devtools';
+import FormData from 'form-data';
+
 import {getTheater} from '../util/api';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
