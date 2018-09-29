@@ -39,13 +39,15 @@ class Theater extends Component {
   getTheaterInfo = async()=>{
     const formData = new FormData();
     formData.append('paramList', JSON.stringify({"MethodName":"SpecialCinemaList","channelType":"HO","osType":"Chrome","osVersion":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36","DetailDivisionCode":"0300","Latitude":"37.5675451","Longitude":"126.9773356"}));
-    const data = await getTheater(formData);
-    console.log(data);
+    const result = await getTheater(formData);
+    console.log(result.data.Cinemas.Items);
+    this.props.BaseStore.getNearCinemas(result.data.Cinemas.Items);
   }
 
 
   componentDidMount(){
     this.getArea().then((location)=>this.props.BaseStore.initLocation(location));
+    this.getTheaterInfo();
   }
 
   componentDidUpdate(nextProps){
@@ -64,7 +66,7 @@ class Theater extends Component {
   render(){
     const { classes } = this.props;
     const { BaseStore }=this.props;
-    this.getTheaterInfo();
+    
     return (
       <div>
         <HeaderWrapper>

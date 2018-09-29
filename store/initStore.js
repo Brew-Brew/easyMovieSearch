@@ -6,13 +6,18 @@ class Store {
             { id: "cgv", title: "CGV" },
             { id: "megabox", title: "MEGA BOX" },
             { id: "lotte-cinema", title: "LOTTE CINEMA" }
-          ],location: {}});
+          ],location: {},nearCinemas:[]});
     }
 
     @action
     initLocation=(data)=>{
         console.log(data);
         this.data.location={...data};
+    }
+
+    @action
+    getNearCinemas=(cinema)=>{
+        this.data.nearCinemas=[...cinema];
     }
 }
 
