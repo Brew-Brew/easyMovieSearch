@@ -21,10 +21,6 @@ app
       app.render(req, res, actualPage, queryParams);
     });
 
-    server.get("/getNearTheater", (req,res) =>{
-
-    })
-
     server.get("*", (req, res) => {
       return handle(req, res);
     });

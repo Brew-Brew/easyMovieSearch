@@ -25,17 +25,33 @@ class Theater extends Component {
   
   constructor(props){
     super(props);
-    this.state={ };
-    this.getArea=this.getArea.bind(this);
-    
+    this.state={};
   }
-  getArea(){
+
+  getArea = () => {
     return new Promise(function (resolve, reject){ navigator.geolocation.getCurrentPosition( function (position) {
      resolve({latitude: position.coords.latitude, longitude: position.coords.longitude});
     })
   });
   }
-  
+
+  getDistance = (lat1, lon1, lat2, lon2, unit) => {
+    var radlat1 = Math.PI * lat1/180
+    var radlat2 = Math.PI * lat2/180
+    var theta = lon1-lon2
+    var radtheta = Math.PI * theta/180
+    var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+    if (dist > 1) {
+      dist = 1;
+    }
+    dist = Math.acos(dist)
+    dist = dist * 180/Math.PI
+    dist = dist * 60 * 1.1515
+    if (unit=="K") { dist = dist * 1.609344 }
+    if (unit=="N") { dist = dist * 0.8684 }
+    return dist
+  }
+
   getTheaterInfo = async()=>{
     const { BaseStore }=this.props;
     const {data} = BaseStore;
@@ -48,8 +64,9 @@ class Theater extends Component {
         "osType":"Chrome",
         "osVersion":""}));
     const result = await getTheater(formData);
-    console.log(result.data.Cinemas.Items);
-    this.props.BaseStore.getNearCinemas(result.data.Cinemas.Items);
+    if(result.data.Cinemas.Items){
+    this.props.BaseStore.getNearCinemas(this.sortTheater(result.data.Cinemas.Items));
+    }
   }
 
 
@@ -71,11 +88,23 @@ class Theater extends Component {
       });
   }
 
+  sortTheater = (nearCinemas) => {
+    const { BaseStore }=this.props;
+    const {data} = BaseStore;
+    const { location } = data;
+    nearCinemas.forEach((cinema)=>{
+        cinema.Distance=(this.getDistance(location.latitude,location.longitude,cinema.Latitude,cinema.Longitude,"K"));
+       });
+      
+       return(nearCinemas.sort((a,b)=> a.Distance-b.Distance));
+  }
+
   render(){
     const { BaseStore }=this.props;
     const {data} = BaseStore;
     const { theater, nearCinemas, location } = data;
     console.log(data);
+
     return (
       <div>
         <HeaderWrapper>
