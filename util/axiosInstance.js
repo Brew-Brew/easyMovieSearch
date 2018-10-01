@@ -1,7 +1,7 @@
 import axios from 'axios';
-import qs from 'qs';
 
 export const api = axios.create({
-    baseURL: 'https://www.lottecinema.co.kr',
+    baseURL: 'http://www.lottecinema.co.kr',
     timeout: 1000,
   });
+  

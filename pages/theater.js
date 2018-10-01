@@ -65,6 +65,7 @@ class Theater extends Component {
         "osType":"Chrome",
         "osVersion":""}));
     const result = await getTheater(formData);
+    // array of object 중복제거
     const filteredCinema = (Object.values((result.data.Cinemas.Items).reduce((acc,cur)=>Object.assign(acc,{[cur.CinemaName]:cur}),{})))
     if(filteredCinema){
     this.props.BaseStore.getNearCinemas(this.sortTheater(filteredCinema));
@@ -73,12 +74,10 @@ class Theater extends Component {
 
 
   componentDidMount(){
-    this.getArea().then((location)=>this.props.BaseStore.initLocation(location));
-    this.getTheaterInfo();
+    this.getArea().then((location)=>this.props.BaseStore.initLocation(location)).then(()=>this.getTheaterInfo());
   }
 
   componentDidUpdate(nextProps){
-    const { BaseStore }=this.props;
     var mapOptions = {
       center: new naver.maps.LatLng(nextProps.BaseStore.data.location.latitude, nextProps.BaseStore.data.location.longitude),
       zoom: 10
@@ -112,7 +111,7 @@ class Theater extends Component {
         <HeaderWrapper>
          <Card>
          <CardContent>
-          <h4>영화관</h4>
+          <h4>Select Theater</h4>
           {theater.map((val)=><Button variant="outlined" color="primary" >{val.title}</Button>)}
           </CardContent>
          </Card>
@@ -130,10 +129,13 @@ class Theater extends Component {
                 <h2>현재 위치기반 가까운 영화관</h2>
                 <h4>현재위치 { location.latitude},{location.longitude}</h4>
                 {nearCinemas.map((cinema) => {
-                  return( <div>
-                   <h5>{cinema.CinemaNameKR}({cinema.CinemaNameUS})</h5>
-                   <p>{cinema.Latitude},{cinema.Longitude}</p>
-                 </div>)
+                  return( <Card>
+                  <CardContent>
+                  <Button variant="outlined" color="primary" >{cinema.CinemaNameKR}({cinema.CinemaNameUS})</Button>
+                    <p>{cinema.Latitude},{cinema.Longitude}</p>
+                    <p>{cinema.Distance}KM</p>
+                   </CardContent>
+                   </Card>)
                 })}
 
               </Typography>

@@ -1,13 +1,17 @@
 import {Provider} from "mobx-react"
 import Head from 'next/head'
 import Card from '@material-ui/core/Card';
+import styled from 'styled-components';
+const Wrapper = styled.div`
+ text-align: center;
+`;
 
 import Theater from "./theater";
 import initStore from "../store/initStore"
 import Header from "../components/Header";
 const store = initStore();
 export default () => (
-  <Card>
+  <Wrapper>
     <Head>
       <title>Easy search movie </title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
@@ -18,5 +22,5 @@ export default () => (
       <Provider BaseStore={store}>
         <Theater/>
       </Provider>
-  </Card>
+  </Wrapper>
 );

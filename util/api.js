@@ -1,10 +1,11 @@
+
 import {api} from './axiosInstance';
 
-
 export function getTheater(body) {
-    return api.post('/LCWS/Cinema/CinemaData.aspx',body,
+    return api.post('/LCWS/Cinema/CinemaData.aspx',((body)),
         {headers: {
-            'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
+            Accept: "application/json",
+            'content-type':  'multipart/form-data',
           }
     }).catch((err)=>console.log(err));
 }
