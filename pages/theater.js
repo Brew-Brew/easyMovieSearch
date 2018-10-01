@@ -4,7 +4,7 @@ import DevTools from 'mobx-react-devtools';
 import FormData from 'form-data';
 import _ from 'lodash';
 
-import {getTheater} from '../util/api';
+import {getTheater,getMovie} from '../util/api';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import CardActions from '@material-ui/core/CardActions';
@@ -72,6 +72,25 @@ class Theater extends Component {
     }
   }
 
+  // test with dummy
+  getMovieInfo = async()=>{
+    const { BaseStore }=this.props;
+    const {data} = BaseStore;
+    const formData = new FormData();
+    formData.append(
+      'paramList', JSON.stringify(
+        {
+          "MethodName":"GetPlaySequence",
+          "channelType":"MW",
+          "osType":"",
+          "osVersion":"",
+          "playDate":"2018-10-02",
+          "cinemaID":"1|2|1016",
+          "representationMovieCode":""
+        }));
+    const result = await getMovie(formData);
+    console.log(result);
+    }
 
   componentDidMount(){
     this.getArea().then((location)=>this.props.BaseStore.initLocation(location)).then(()=>this.getTheaterInfo());
@@ -105,7 +124,7 @@ class Theater extends Component {
     const {data} = BaseStore;
     const { theater, nearCinemas, location } = data;
     console.log(data);
-
+    this.getMovieInfo();
     return (
       <div>
         <HeaderWrapper>
