@@ -4,6 +4,10 @@ import DevTools from 'mobx-react-devtools';
 import FormData from 'form-data';
 import _ from 'lodash';
 
+import lotteCinema from './assets/lotte.jpg';
+import cgv from './assets/cgv.jpg';
+import megabox from './assets/megabox.jpg';
+
 import {getTheater,getMovie} from '../util/api';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
@@ -19,6 +23,15 @@ const HeaderWrapper = styled.div`
 
 const ContentWrapper = styled.div`
   margin: 10px;
+`;
+
+const TheaterIcon = styled.img`
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  border: solid 1px #9da9f1;
+  padding: 2px 10px;
+  margin: 0px 10px;
 `;
 
 @inject('BaseStore') @observer
@@ -131,7 +144,8 @@ class Theater extends Component {
          <Card>
          <CardContent>
           <h4>Select Theater</h4>
-          {theater.map((val)=><Button variant="outlined" color="primary" >{val.title}</Button>)}
+          {theater.map((val)=><TheaterIcon src={(val.id === 'lotteCinema' && lotteCinema)
+            || val.id==='cgv' && cgv  || val.id==='megabox' && megabox } />)}
           </CardContent>
          </Card>
         </HeaderWrapper>
