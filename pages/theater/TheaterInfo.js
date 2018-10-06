@@ -9,12 +9,12 @@ const TheaterWrapper = styled.div`
   width: 50%;
 `;
 
-const TheaterInfo = ({ nearCinemas }) =>{
+const TheaterInfo = ({ nearCinemas, getMovieInfo }) =>{
     return(
         <TheaterWrapper>
             <Typography component="p">
             {nearCinemas.map((cinema) => {
-            return( <Card>
+            return( <Card  onClick={()=> getMovieInfo(cinema)}>
             <CardContent>
             <Button variant="outlined" color="primary" >{cinema.CinemaNameKR}({cinema.CinemaNameUS})</Button>
                 <p>{cinema.Latitude},{cinema.Longitude}</p>

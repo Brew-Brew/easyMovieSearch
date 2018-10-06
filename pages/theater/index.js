@@ -88,7 +88,8 @@ class Theater extends Component {
   }
 
   // test with dummy
-  getMovieInfo = async()=>{
+  getMovieInfo = async(theater)=>{
+    console.log(theater)
     const { BaseStore }=this.props;
     const {data} = BaseStore;
     const formData = new FormData();
@@ -100,7 +101,7 @@ class Theater extends Component {
           "osType":"",
           "osVersion":"",
           "playDate":"2018-10-08",
-          "cinemaID":"1|2|1016",
+          "cinemaID":`1|1|${theater.CinemaID}`,
           "representationMovieCode":""
         }));
     const result = await getMovie(formData);
@@ -139,7 +140,6 @@ class Theater extends Component {
     const { BaseStore }=this.props;
     const {data} = BaseStore;
     const { theater, nearCinemas, location } = data;
-    this.getMovieInfo();
     return (
       <div>
         <HeaderWrapper>
@@ -162,7 +162,7 @@ class Theater extends Component {
             </CardActions>
             <h2>현재 위치기반 가까운 영화관</h2>
             <h4>현재위치 { location.latitude},{location.longitude}</h4>
-            <TheaterInfo nearCinemas={nearCinemas} />
+            <TheaterInfo nearCinemas={nearCinemas} getMovieInfo={this.getMovieInfo}/>
             </CardContent>
           </Card>
         </ContentWrapper>
