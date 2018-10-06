@@ -5,6 +5,7 @@ import FormData from 'form-data';
 import _ from 'lodash';
 import moment from 'moment';
 import TheaterInfo from './TheaterInfo';
+import MovieInfo from './MovieInfo';
 
 import lotteCinema from '../assets/lotte.jpg';
 import cgv from '../assets/cgv.jpg';
@@ -106,7 +107,7 @@ class Theater extends Component {
         }));
     const result = await getMovie(formData);
     const { data: { PlaySeqs: {Items} } } = result;
-    console.log(Items);
+    this.props.BaseStore.getCinemasTime(this.sortTimeInfo(Items));
     }
 
   componentDidMount(){
@@ -126,7 +127,6 @@ class Theater extends Component {
   }
 
   sortTheater = (nearCinemas) => {
-    console.log(nearCinemas);
     const { BaseStore }=this.props;
     const {data} = BaseStore;
     const { location } = data;
@@ -136,10 +136,14 @@ class Theater extends Component {
     return(nearCinemas.sort((a,b)=> a.Distance-b.Distance));
   }
 
+  sortTimeInfo = (movies) => {
+    return _.orderBy(movies, ['StartTime'],['asc']).filter((movie)=> movie.StartTime > moment().format('hh:mm'))
+  }
+
   render(){
     const { BaseStore }=this.props;
     const {data} = BaseStore;
-    const { theater, nearCinemas, location } = data;
+    const { theater, nearCinemas, location, selectedCinemaInfo } = data;
     return (
       <div>
         <HeaderWrapper>
@@ -163,6 +167,7 @@ class Theater extends Component {
             <h2>현재 위치기반 가까운 영화관</h2>
             <h4>현재위치 { location.latitude},{location.longitude}</h4>
             <TheaterInfo nearCinemas={nearCinemas} getMovieInfo={this.getMovieInfo}/>
+            <MovieInfo movies={selectedCinemaInfo}/>
             </CardContent>
           </Card>
         </ContentWrapper>

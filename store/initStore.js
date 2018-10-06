@@ -6,7 +6,7 @@ class Store {
             { id: "cgv", title: "CGV" },
             { id: "megabox", title: "MEGA BOX" },
             { id: "lotteCinema", title: "LOTTE CINEMA" }
-          ],location: {},nearCinemas:[]});
+          ],location: {},nearCinemas:[],selectedCinemaInfo:[]});
     }
 
     @action
@@ -18,6 +18,11 @@ class Store {
     @action
     getNearCinemas=(cinema)=>{
         this.data.nearCinemas=[...cinema];
+    }
+
+    @action
+    getCinemasTime=(timeInfo)=>{
+        this.data.selectedCinemaInfo=[...timeInfo];
     }
 }
 
