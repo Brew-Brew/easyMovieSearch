@@ -1,14 +1,16 @@
 import React, { Component } from "react";
-import {inject, observer} from "mobx-react";
+import { inject, observer } from "mobx-react";
 import DevTools from 'mobx-react-devtools';
 import FormData from 'form-data';
 import _ from 'lodash';
+import moment from 'moment';
+import TheaterInfo from './TheaterInfo';
 
-import lotteCinema from './assets/lotte.jpg';
-import cgv from './assets/cgv.jpg';
-import megabox from './assets/megabox.jpg';
+import lotteCinema from '../assets/lotte.jpg';
+import cgv from '../assets/cgv.jpg';
+import megabox from '../assets/megabox.jpg';
 
-import {getTheater,getMovie} from '../util/api';
+import { getTheater, getMovie } from '../../util/api';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import CardActions from '@material-ui/core/CardActions';
@@ -137,7 +139,6 @@ class Theater extends Component {
     const { BaseStore }=this.props;
     const {data} = BaseStore;
     const { theater, nearCinemas, location } = data;
-    console.log(data);
     this.getMovieInfo();
     return (
       <div>
@@ -159,20 +160,9 @@ class Theater extends Component {
               <CardActions>
               <div id="map" style={{width:"100%",height: "400px"}}></div>
             </CardActions>
-              <Typography component="p">
-                <h2>현재 위치기반 가까운 영화관</h2>
-                <h4>현재위치 { location.latitude},{location.longitude}</h4>
-                {nearCinemas.map((cinema) => {
-                  return( <Card>
-                  <CardContent>
-                  <Button variant="outlined" color="primary" >{cinema.CinemaNameKR}({cinema.CinemaNameUS})</Button>
-                    <p>{cinema.Latitude},{cinema.Longitude}</p>
-                    <p>{cinema.Distance}KM</p>
-                   </CardContent>
-                   </Card>)
-                })}
-
-              </Typography>
+            <h2>현재 위치기반 가까운 영화관</h2>
+            <h4>현재위치 { location.latitude},{location.longitude}</h4>
+            <TheaterInfo nearCinemas={nearCinemas} />
             </CardContent>
           </Card>
         </ContentWrapper>

@@ -1,15 +1,18 @@
-import {Provider} from "mobx-react"
+import { Provider } from "mobx-react"
 import Head from 'next/head'
 import Card from '@material-ui/core/Card';
 import styled from 'styled-components';
-const Wrapper = styled.div`
- text-align: center;
-`;
 
 import Theater from "./theater";
 import initStore from "../store/initStore"
 import Header from "../components/Header";
+
+const Wrapper = styled.div`
+ text-align: center;
+`;
+
 const store = initStore();
+
 export default () => (
   <Wrapper>
     <Head>
