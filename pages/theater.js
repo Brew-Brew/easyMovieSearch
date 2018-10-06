@@ -97,12 +97,13 @@ class Theater extends Component {
           "channelType":"MW",
           "osType":"",
           "osVersion":"",
-          "playDate":"2018-10-02",
+          "playDate":"2018-10-08",
           "cinemaID":"1|2|1016",
           "representationMovieCode":""
         }));
     const result = await getMovie(formData);
-    console.log(result);
+    const { data: { PlaySeqs: {Items} } } = result;
+    console.log(Items);
     }
 
   componentDidMount(){
