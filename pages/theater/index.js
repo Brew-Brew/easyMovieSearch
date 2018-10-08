@@ -9,7 +9,7 @@ import MovieInfo from './MovieInfo';
 
 import lotteCinema from '../assets/lotte.jpg';
 import cgv from '../assets/cgv.jpg';
-import megabox from '../assets/megabox.jpg';
+import megabox from '../assets/megabox.png';
 
 import { getTheater, getMovie } from '../../util/api';
 import Card from '@material-ui/core/Card';
@@ -32,9 +32,10 @@ const TheaterIcon = styled.img`
   width: 100px;
   height: 50px;
   border-radius: 10px;
-  border: solid 1px #9da9f1;
+  border: solid 1px #384386;
   padding: 2px 10px;
   margin: 0px 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 `;
 
 @inject('BaseStore') @observer
