@@ -91,7 +91,6 @@ class Theater extends Component {
 
   // test with dummy
   getMovieInfo = async(theater)=>{
-    console.log(theater)
     const { BaseStore }=this.props;
     const {data} = BaseStore;
     const formData = new FormData();
@@ -102,7 +101,7 @@ class Theater extends Component {
           "channelType":"MW",
           "osType":"",
           "osVersion":"",
-          "playDate":"2018-10-08",
+          "playDate":`${moment().format('YYYY-MM-DD')}`,
           "cinemaID":`1|1|${theater.CinemaID}`,
           "representationMovieCode":""
         }));

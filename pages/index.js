@@ -1,6 +1,5 @@
 import { Provider } from "mobx-react"
-import Head from 'next/head'
-import Card from '@material-ui/core/Card';
+import Head from 'next/head';
 import styled from 'styled-components';
 
 import Theater from "./theater";
