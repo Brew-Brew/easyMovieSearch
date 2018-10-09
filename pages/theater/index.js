@@ -71,9 +71,6 @@ class Theater extends Component {
   }
 
   getTheaterInfo = async()=>{
-    const { BaseStore }=this.props;
-    const {data} = BaseStore;
-    const { location} = data;
     const formData = new FormData();
     formData.append(
       'paramList', JSON.stringify(
@@ -91,8 +88,6 @@ class Theater extends Component {
 
   // test with dummy
   getMovieInfo = async(theater)=>{
-    const { BaseStore }=this.props;
-    const {data} = BaseStore;
     const formData = new FormData();
     formData.append(
       'paramList', JSON.stringify(

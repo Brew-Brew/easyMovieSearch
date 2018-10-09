@@ -25,6 +25,8 @@ const MovieInfo = ({ movies }) =>{
                 <CardContent>
                 <Button variant="outlined" color="primary" >{movie.MovieNameKR}({movie.MovieNameUS})</Button>
                     <p>{movie.StartTime}~{movie.EndTime}</p>
+                    <p>이용등급: {movie.ViewGradeNameKR}</p>
+                    <p>남은좌석: {movie.BookingSeatCount}</p>
                 </CardContent>
                 </Card>
             </CardWrapper>)
