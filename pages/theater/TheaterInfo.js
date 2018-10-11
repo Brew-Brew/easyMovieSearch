@@ -25,7 +25,7 @@ const TheaterInfo = ({ nearCinemas, getMovieInfo }) =>{
             <CardContent>
             <Button variant="outlined" color="primary" >{cinema.CinemaNameKR}({cinema.CinemaNameUS})</Button>
                 <p>{cinema.Latitude},{cinema.Longitude}</p>
-                <p>{cinema.Distance}KM</p>
+                <p>현재위치에서 {cinema.Distance.toFixed(2)}KM 떨어져 있음</p>
             </CardContent>
             </Card>
             </CardWrapper>)
