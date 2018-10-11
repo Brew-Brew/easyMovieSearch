@@ -13,6 +13,7 @@ const TheaterWrapper = styled.div`
 
 const CardWrapper = styled.div`
   margin-bottom: 10px;
+  border: solid 5px rgba(63, 81, 181, 0.5);
 `;
 
 const TheaterInfo = ({ nearCinemas, getMovieInfo }) =>{

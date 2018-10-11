@@ -13,6 +13,15 @@ const MovieWrapper = styled.div`
 
 const CardWrapper = styled.div`
   margin-bottom: 10px;
+  float: left;
+  width: 30%;
+  height: 400px;
+  & > div {
+      height: 300px;
+  }
+  button{
+      height: 100px;
+  }
 `;
 
 const MovieInfo = ({ movies }) =>{
