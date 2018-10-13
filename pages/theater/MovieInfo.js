@@ -4,6 +4,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
+import { device } from '../../util/device';
 
 const MovieWrapper = styled.div`
   width: calc(50% - 40px);
@@ -16,6 +17,9 @@ const CardWrapper = styled.div`
   float: left;
   width: 30%;
   height: 400px;
+  @media ${device.mobileToTablet} {
+    width:100%;
+  }
   & > div {
       height: 300px;
   }
@@ -26,10 +30,12 @@ const CardWrapper = styled.div`
 
 const MovieInfo = ({ movies }) =>{
     return(
+        
         <MovieWrapper>
             <Typography component="p">
             {movies.map((movie) => {
-            return( <CardWrapper>
+            return( 
+            <CardWrapper>
                 <Card>
                 <CardContent>
                 <Button variant="outlined" color="primary" >{movie.MovieNameKR}({movie.MovieNameUS})</Button>
@@ -38,10 +44,12 @@ const MovieInfo = ({ movies }) =>{
                     <p>남은좌석: {movie.BookingSeatCount}</p>
                 </CardContent>
                 </Card>
-            </CardWrapper>)
+            </CardWrapper>
+            )
             })}
         </Typography>
       </MovieWrapper>
+     
     )
 }
 
