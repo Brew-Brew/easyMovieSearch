@@ -7,16 +7,14 @@ import styled from 'styled-components';
 import { device } from '../../util/device';
 
 const MovieWrapper = styled.div`
-  width: calc(50% - 40px);
+  width: 50%;
   float: right;
-  margin: 10px 10px;
 `;
 
 const CardWrapper = styled.div`
   margin-bottom: 10px;
   float: left;
   width: 30%;
-  height: 400px;
   @media ${device.mobileToTablet} {
     width:100%;
   }

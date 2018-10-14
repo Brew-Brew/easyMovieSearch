@@ -11,7 +11,6 @@ class Store {
 
     @action
     initLocation=(data)=>{
-        console.log(data);
         this.data.location={...data};
     }
 

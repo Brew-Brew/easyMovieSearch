@@ -6,14 +6,16 @@ import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
 
 const TheaterWrapper = styled.div`
-  width: calc(50% - 40px);
+  width: 50%;
   float: left;
-  margin: 10px 10px;
 `;
 
 const CardWrapper = styled.div`
   margin-bottom: 10px;
   border: solid 5px rgba(63, 81, 181, 0.5);
+  button{
+      font-size: .5em;
+  }
 `;
 
 const TheaterInfo = ({ nearCinemas, getMovieInfo }) =>{
