@@ -14,13 +14,7 @@ app
   .prepare()
   .then(() => {
     const server = express().Router;
-
-    server.get("/:id", (req, res) => {
-      const actualPage = "/theater";
-      const queryParams = { title: req.params.id };
-      app.render(req, res, actualPage, queryParams);
-    });
-
+  
     server.get("*", (req, res) => {
       return handle(req, res);
     });
