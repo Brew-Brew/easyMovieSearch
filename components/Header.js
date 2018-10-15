@@ -13,9 +13,6 @@ const styles = {
   root: {
     flexGrow: 1,
   },
-  flex: {
-    flexGrow: 1,
-  },
   menuButton: {
     marginLeft: -12,
     marginRight: 20,
@@ -31,12 +28,11 @@ function ButtonAppBar(props) {
           <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
             <MenuIcon />
           </IconButton>
-          <Typography variant="title" color="inherit" className={classes.flex}>
-            Movie
-          </Typography>
-          <Button href="/about" color="inherit">About</Button>
+          <Button href="/" color="inherit">
+            Home
+          </Button>
+          <Button href="/about" size="small" color="inherit">About</Button>
           <Menu/>
-          <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
     </div>
