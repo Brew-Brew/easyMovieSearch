@@ -14,7 +14,12 @@ app
   .prepare()
   .then(() => {
     const server = express().Router;
-  
+
+    server.get("/about", (req, res) => {
+      const actualPage = "/about";
+      app.render(req, res, actualPage);
+    });
+
     server.get("*", (req, res) => {
       return handle(req, res);
     });
