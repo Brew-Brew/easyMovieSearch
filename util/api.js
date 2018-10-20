@@ -1,5 +1,5 @@
 
-import {api} from './axiosInstance';
+import {api, kakao} from './axiosInstance';
 
 export function getTheater(body) {
     return api.post('/LCWS/Cinema/CinemaData.aspx',((body)),
@@ -18,3 +18,14 @@ export function getMovie(body) {
           }
     }).catch((err)=>console.log(err));
 }
+
+export function getAddress(latlng){
+    console.log(latlng);
+    return kakao.get('local/geo/coord2regioncode.json',{
+        params:{
+            x: latlng.lat,
+            y: latlng.lng,
+        } 
+    });
+}
+

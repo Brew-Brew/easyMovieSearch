@@ -11,7 +11,7 @@ import lotteCinema from '../assets/lotte.jpg';
 import cgv from '../assets/cgv.jpg';
 import megabox from '../assets/megabox.png';
 
-import { getTheater, getMovie } from '../../util/api';
+import { getTheater, getMovie, getAddress } from '../../util/api';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -106,8 +106,10 @@ class Theater extends Component {
       this.props.BaseStore.getCinemasTime(this.sortTimeInfo(Items));
     }
 
-  componentDidMount(){
+   componentDidMount(){
     this.getArea().then((location)=>this.props.BaseStore.initLocation(location));
+    const address = getAddress({lat: 127.1141382,lng: 37.3599968});
+    console.log(address);
   }
 
   componentDidUpdate(nextProps){
@@ -135,6 +137,7 @@ class Theater extends Component {
   sortTimeInfo = (movies) => {
     return _.orderBy(movies, ['StartTime'],['asc']).filter((movie)=> movie.StartTime > moment().format('hh:mm'))
   }
+
 
   render(){
     const { BaseStore }=this.props;
