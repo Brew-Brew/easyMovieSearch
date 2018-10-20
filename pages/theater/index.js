@@ -107,9 +107,17 @@ class Theater extends Component {
     }
 
    componentDidMount(){
-    this.getArea().then((location)=>this.props.BaseStore.initLocation(location));
-    const address = getAddress({lat: 127.1141382,lng: 37.3599968});
-    console.log(address);
+    this.getArea()
+    .then((location)=>this.props.BaseStore.initLocation(location)).then(()=>this.getAddressInfo());
+  }
+
+  getAddressInfo = async () =>{
+    const { BaseStore }=this.props;
+    const { data, initAddress } = BaseStore;
+    console.log(data);
+    const address = await getAddress({lat:data.location.latitude, lng: data.location.longitude});
+    const{documents} = address;
+    initAddress(documents[documents.length-1].address_name);
   }
 
   componentDidUpdate(nextProps){
@@ -142,7 +150,7 @@ class Theater extends Component {
   render(){
     const { BaseStore }=this.props;
     const {data} = BaseStore;
-    const { theater, nearCinemas, location, selectedCinemaInfo } = data;
+    const { theater, nearCinemas, location, selectedCinemaInfo, address } = data;
     return (
       <div>
         <HeaderWrapper>
@@ -164,7 +172,7 @@ class Theater extends Component {
               <div id="map" style={{width:"100%",height: "400px"}}></div>
             </CardActions>
             <h2>현재 위치기반 가까운 영화관</h2>
-            <h4>현재위치 { location.latitude},{location.longitude}</h4>
+            <h4>현재위치: { address}</h4>
             <TheaterInfo nearCinemas={nearCinemas} getMovieInfo={this.getMovieInfo}/>
             <MovieInfo movies={selectedCinemaInfo}/>
             </CardContent>

@@ -23,9 +23,12 @@ export function getAddress(latlng){
     console.log(latlng);
     return kakao.get('local/geo/coord2regioncode.json',{
         params:{
-            x: latlng.lat,
-            y: latlng.lng,
-        } 
-    });
+            x: latlng.lng,
+            y: latlng.lat,
+        },
+        headers:{
+                Authorization: 'KakaoAK 74da782b5576030bd3d236b264529ccb'
+            } 
+    }).then((response)=>response.data);
 }
 

@@ -17,7 +17,7 @@ export default () => (
     <Head>
       <title>Easy search movie </title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
-      <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=1sLlNgzz6o0MYsjq4xPb&submodules=geocoder"></script>
+      <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=1sLlNgzz6o0MYsjq4xPb"></script>
     </Head>
     <Header/>
       <h1>EasyMovieSearch</h1>
