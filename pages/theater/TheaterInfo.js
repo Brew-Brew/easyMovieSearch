@@ -5,6 +5,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
 
+const Header = styled.h5`
+    font-size: 15px;
+`;
 const TheaterWrapper = styled.div`
   width: 50%;
   float: left;
@@ -23,6 +26,7 @@ const CardWrapper = styled.div`
 const TheaterInfo = ({ nearCinemas, getMovieInfo }) =>{
     return(
         <TheaterWrapper>
+            <Header>영화관 목록</Header>
             <Typography component="p">
             {nearCinemas.map((cinema) => {
             return( <CardWrapper>

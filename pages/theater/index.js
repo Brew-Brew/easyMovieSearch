@@ -34,7 +34,9 @@ const TheaterIcon = styled.img`
   border: solid 1px #384386;
   padding: 2px 10px;
   margin: 0px 10px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  &:hover{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  }
 `;
 
 @inject('BaseStore') @observer

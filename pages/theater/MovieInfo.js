@@ -6,6 +6,10 @@ import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
 import { device } from '../../util/device';
 
+const Header = styled.h5`
+    font-size: 15px;
+`;
+
 const MovieWrapper = styled.div`
   width: 50%;
   float: right;
@@ -28,8 +32,8 @@ const CardWrapper = styled.div`
 
 const MovieInfo = ({ movies }) =>{
     return(
-        
         <MovieWrapper>
+            <Header>영화목록</Header>
             <Typography component="p">
             {movies.map((movie) => {
             return( 
