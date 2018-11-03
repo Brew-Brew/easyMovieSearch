@@ -11,6 +11,8 @@ const TheaterWrapper = styled.div`
 `;
 
 const CardWrapper = styled.div`
+  width: 200px;
+  margin: auto;
   margin-bottom: 10px;
   border: solid 5px rgba(63, 81, 181, 0.5);
   button{
