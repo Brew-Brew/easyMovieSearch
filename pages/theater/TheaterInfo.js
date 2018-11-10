@@ -19,6 +19,9 @@ const CardWrapper = styled.div`
   @media ${device.mobileToTablet} {
       width: 100px;
   }
+  &:active{
+    background-color: rgba(63, 81, 181, 0.5);
+  }
   margin: auto;
   margin-bottom: 10px;
   border: solid 5px rgba(63, 81, 181, 0.5);

@@ -15,7 +15,7 @@ const MovieWrapper = styled.div`
   float: right;
 `;
 
-const CardWrapper = styled.div`
+const CardWrapper = styled.button`
   margin-bottom: 10px;
   float: left;
   width: 30%;

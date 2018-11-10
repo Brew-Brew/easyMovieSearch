@@ -12,11 +12,12 @@ import styled from 'styled-components';
 
 import TheaterInfo from './TheaterInfo';
 import MovieInfo from './MovieInfo';
-import lotteCinema from '../assets/lotte.jpg';
-import cgv from '../assets/cgv.jpg';
-import megabox from '../assets/megabox.png';
-import { getTheater, getMovie, getAddress } from '../../util/api';
 
+
+import { lotteIcon, cgvIcon, megaboxIcon } from '../assets';
+
+import { getTheater, getMovie, getAddress } from '../../util/api';
+import { device } from '../../util/device';
 
 /*
 스타일 컴포넌트들
@@ -24,6 +25,12 @@ import { getTheater, getMovie, getAddress } from '../../util/api';
 
 const HeaderWrapper = styled.div`
   margin: 10px;
+  width: 600px;
+  text-align: center;
+  @media ${device.mobileToTablet} {
+    width: 100%;
+  }
+  margin: auto;
 `;
 
 const ContentWrapper = styled.div`
@@ -162,9 +169,15 @@ class Theater extends Component {
         <HeaderWrapper>
          <Card>
          <CardContent>
-          <h4>Select Theater</h4>
-          {theater.map((val)=><TheaterIcon onClick={()=>this.getTheaterInfo(val.id)} src={(val.id === 'lotteCinema' && lotteCinema)
-            || val.id==='cgv' && cgv  || val.id==='megabox' && megabox } />)}
+          <h2>Select Theater</h2>
+          {theater.map((val)=>
+            <TheaterIcon 
+            onClick={()=>this.getTheaterInfo(val.id)} 
+            src={
+              (val.id === 'lotteCinema' && lotteIcon)
+              || val.id==='cgv' && cgvIcon  
+              || val.id==='megabox' && megaboxIcon } />)
+            }
           </CardContent>
          </Card>
         </HeaderWrapper>

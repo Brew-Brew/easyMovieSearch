@@ -6,9 +6,21 @@ import Theater from "./theater";
 import initStore from "../store/initStore"
 import Header from "../components/Header";
 
+import { movieIcon } from './assets';
+
+const HeadWrapper = styled.div`
+  margin: 50px 0px;
+`
+
 const Wrapper = styled.div`
  text-align: center;
 `;
+
+const Title = styled.h2`
+  display: inline-block;
+  margin: 0 0;
+  vertical-align: bottom;
+`
 
 const store = initStore();
 
@@ -20,7 +32,10 @@ export default () => (
       <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=1sLlNgzz6o0MYsjq4xPb"></script>
     </Head>
     <Header/>
-      <h1>EasyMovieSearch</h1>
+      <HeadWrapper>
+        <img src={movieIcon} style={{verticalAlign: 'middle', marginRight: '10px'}} width="50px" height="50px" alt="movie"/> 
+        <Title>EasyMovieSearch</Title>
+      </HeadWrapper>
       <Provider BaseStore={store}>
         <Theater/>
       </Provider>
