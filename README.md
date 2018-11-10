@@ -1,4 +1,4 @@
-# Easy Movie Search
+# Easy Movie Search :movie:
 ```
 위치기반으로, 근처에 있는 영화관중 가능한 영화를 영화관별로 빠르게 확인하는 웹 사이트를 구축해본다.
  Next.js(SSR)+ MOBX(데이터관리) + REACT 를 기반으로 제작해볼것이다.(변경가능)
@@ -29,6 +29,6 @@ https://brunch.co.kr/@hee072794/81 참고
 ### Mobx
 https://blog.mvp-space.com/next-js-meets-firebase-and-mobx-b3ae90d5b879 참고
 
-## API
+## API :computer:
 - 지도: naver map api 사용
-- 영화데이터: 적절한 open api가 많지 않아, 크롤링 할 예정
+- 영화데이터: 적절한 open api가 많지 않아, 각 사이트에서 api 를 받아서 처리하는 부분을 분석해 api call을 통해 받아옴
