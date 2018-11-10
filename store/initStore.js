@@ -12,7 +12,7 @@ class Store {
           nearCinemas:[],
           selectedCinemaInfo:[],
           address: ""
-        });
+      });
     }
 
     @action

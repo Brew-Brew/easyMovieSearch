@@ -4,20 +4,23 @@ import DevTools from 'mobx-react-devtools';
 import FormData from 'form-data';
 import _ from 'lodash';
 import moment from 'moment';
-import TheaterInfo from './TheaterInfo';
-import MovieInfo from './MovieInfo';
-
-import lotteCinema from '../assets/lotte.jpg';
-import cgv from '../assets/cgv.jpg';
-import megabox from '../assets/megabox.png';
-
-import { getTheater, getMovie, getAddress } from '../../util/api';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
 
+import TheaterInfo from './TheaterInfo';
+import MovieInfo from './MovieInfo';
+import lotteCinema from '../assets/lotte.jpg';
+import cgv from '../assets/cgv.jpg';
+import megabox from '../assets/megabox.png';
+import { getTheater, getMovie, getAddress } from '../../util/api';
+
+
+/*
+스타일 컴포넌트들
+*/
 
 const HeaderWrapper = styled.div`
   margin: 10px;
@@ -73,23 +76,24 @@ class Theater extends Component {
 
   getTheaterInfo = async(id)=>{
     const formData = new FormData();
+    let result = {};
+    let filteredCinema = [];
     if(id === 'lotteCinema'){
-    formData.append(
-      'paramList', JSON.stringify(
-        {"MethodName":"GetCinemaItems",
-        "channelType":"HO",
-        "osType":"Chrome",
-        "osVersion":""}));
-    const result = await getTheater(formData);
-    // array of object 중복제거
-    const filteredCinema = (Object.values((result.data.Cinemas.Items).reduce((acc,cur)=>Object.assign(acc,{[cur.CinemaName]:cur}),{})))
-    if(filteredCinema){
-    this.props.BaseStore.getNearCinemas(this.sortTheater(filteredCinema));
+      formData.append(
+        'paramList', JSON.stringify(
+          {"MethodName":"GetCinemaItems",
+          "channelType":"HO",
+          "osType":"Chrome",
+          "osVersion":""}));
+      result = await getTheater(formData);
+      // array of object 특정 key 기준으로 중복제거
+      filteredCinema = (Object.values((result.data.Cinemas.Items).reduce((acc,cur)=> ({ ...acc, ...{[cur.CinemaName]:cur} }) ,{})))
+      if(filteredCinema){
+      this.props.BaseStore.getNearCinemas(this.sortTheater(filteredCinema));
+      }
     }
   }
-  }
 
-  // test with dummy
   getMovieInfo = async(theater)=>{
     const formData = new FormData();
       formData.append(
