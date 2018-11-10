@@ -19,11 +19,9 @@ const CardWrapper = styled.div`
   margin-bottom: 10px;
   float: left;
   width: 30%;
+  height: auto;
   @media ${device.mobileToTablet} {
     width:100%;
-  }
-  & > div {
-      height: 300px;
   }
   button{
       height: 100px;
@@ -40,7 +38,7 @@ const MovieInfo = ({ movies }) =>{
             <CardWrapper>
                 <Card>
                 <CardContent>
-                <Button variant="outlined" color="primary" >{movie.MovieNameKR}({movie.MovieNameUS})</Button>
+                <Button style={{width: '100%', height: 'auto'}} variant="outlined" color="primary" >{movie.MovieNameKR}({movie.MovieNameUS})</Button>
                     <p>{movie.StartTime}~{movie.EndTime}</p>
                     <p>이용등급: {movie.ViewGradeNameKR}</p>
                     <p>남은좌석: {movie.BookingSeatCount}</p>
