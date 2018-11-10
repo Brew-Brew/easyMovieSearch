@@ -1,4 +1,4 @@
-# Easy Movie Search :movie:
+# Easy Movie Search :movie_camera:
 ```
 위치기반으로, 근처에 있는 영화관중 가능한 영화를 영화관별로 빠르게 확인하는 웹 사이트를 구축해본다.
  Next.js(SSR)+ MOBX(데이터관리) + REACT 를 기반으로 제작해볼것이다.(변경가능)
