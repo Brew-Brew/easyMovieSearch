@@ -11,7 +11,7 @@ Next.js 는 서버사이드 렌더링과 자동화된 코드스플리팅을 위�
 
 (각 라우트에 해당하는 파일들은 소문자로 pages 디렉토리에 넣어야함).
 
-### 기능
+### 기능 :hammer:
 
 - 간단한 클라이언트 사이드 라우팅
 - Hot Module Replacement 를 지원하는 Webpack 기반 작업환경
@@ -21,7 +21,7 @@ Next.js 는 서버사이드 렌더링과 자동화된 코드스플리팅을 위�
 
 https://brunch.co.kr/@hee072794/81 참고
 
-## 스타일링
+## 스타일링 :scissors:
 
 - material ui 활용
 - styled component 활용 (코드를 최대한 한 파일안에서 볼수 있게 하기 위해서)
