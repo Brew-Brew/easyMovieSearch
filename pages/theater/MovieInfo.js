@@ -31,7 +31,7 @@ const CardWrapper = styled.button`
 const MovieInfo = ({ movies }) =>{
     return(
         <MovieWrapper>
-            <Header>영화목록</Header>
+            <Header>{movies &&  movies.length > 0 && movies[0].CinemaNameKR} 영화목록</Header>
             <Typography component="p">
             {movies.map((movie) => {
             return( 

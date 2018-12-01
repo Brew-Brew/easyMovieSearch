@@ -11,6 +11,7 @@ class Store {
           location: {},
           nearCinemas:[],
           selectedCinemaInfo:[],
+          selectedCinema: {},
           address: ""
       });
     }
@@ -33,6 +34,10 @@ class Store {
     @action
     getCinemasTime=(timeInfo)=>{
         this.data.selectedCinemaInfo=[...timeInfo];
+    }
+    @action
+    setCinema=(cinema)=>{
+        this.data.selectedCinema={...cinema};
     }
 }
 

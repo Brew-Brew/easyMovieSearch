@@ -102,6 +102,7 @@ class Theater extends Component {
   }
 
   getMovieInfo = async(theater)=>{
+    this.props.BaseStore.setCinema(theater);
     const formData = new FormData();
       formData.append(
         'paramList', JSON.stringify(
@@ -162,7 +163,7 @@ class Theater extends Component {
   render(){
     const { BaseStore }=this.props;
     const {data} = BaseStore;
-    const { theater, nearCinemas, location, selectedCinemaInfo, address } = data;
+    const { theater, nearCinemas, selectedCinema, selectedCinemaInfo, address } = data;
     return (
       <div>
         <HeaderWrapper>
