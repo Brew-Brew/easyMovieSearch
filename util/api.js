@@ -20,7 +20,6 @@ export function getMovie(body) {
 }
 
 export function getAddress(latlng){
-    console.log(latlng);
     return kakao.get('local/geo/coord2regioncode.json',{
         params:{
             x: latlng.lng,

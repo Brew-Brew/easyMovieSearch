@@ -127,7 +127,6 @@ class Theater extends Component {
   getAddressInfo = async () =>{
     const { BaseStore }=this.props;
     const { data, initAddress } = BaseStore;
-    console.log(data);
     const address = await getAddress({lat:data.location.latitude, lng: data.location.longitude});
     const{documents} = address;
     initAddress(documents[documents.length-1].address_name);
