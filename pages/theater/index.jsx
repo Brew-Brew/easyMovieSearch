@@ -216,7 +216,7 @@ class Theater extends Component {
         <HeaderWrapper>
           <Card>
             <CardContent>
-              <h2> Select Theater </h2>{" "}
+              <h2> Select Theater </h2>
               {theater.map(val => (
                 <TheaterIcon
                   onClick={() => this.getTheaterInfo(val.id)}
@@ -226,16 +226,16 @@ class Theater extends Component {
                     (val.id === "megabox" && megaboxIcon)
                   }
                 />
-              ))}{" "}
-            </CardContent>{" "}
-          </Card>{" "}
-        </HeaderWrapper>{" "}
+              ))}
+            </CardContent>
+          </Card>
+        </HeaderWrapper>
         <ContentWrapper>
           <Card>
             <CardContent>
               <Typography gutterBottom variant="headline" component="h2">
-                Your Location{" "}
-              </Typography>{" "}
+                Your Location
+              </Typography>
               <CardActions>
                 <div
                   id="map"
@@ -243,20 +243,18 @@ class Theater extends Component {
                     width: "100%",
                     height: "400px"
                   }}
-                >
-                  {" "}
-                </div>{" "}
-              </CardActions>{" "}
-              <h2> 현재 위치기반 가까운 영화관 </h2>{" "}
-              <h4> 현재위치: {address} </h4>{" "}
+                />
+              </CardActions>
+              <h2> 현재 위치기반 가까운 영화관 </h2>
+              <h4> 현재위치: {address} </h4>
               <TheaterInfo
                 nearCinemas={nearCinemas}
                 getMovieInfo={this.getMovieInfo}
-              />{" "}
-              <MovieInfo movies={selectedCinemaInfo} />{" "}
-            </CardContent>{" "}
-          </Card>{" "}
-        </ContentWrapper>{" "}
+              />
+              <MovieInfo movies={selectedCinemaInfo} />
+            </CardContent>
+          </Card>
+        </ContentWrapper>
         <DevTools />
       </div>
     );

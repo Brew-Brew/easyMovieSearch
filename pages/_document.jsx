@@ -26,13 +26,13 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <title> My page </title>{" "}
-          {/* Step 5: Output the styles in the head  */} {this.props.styleTags}{" "}
-        </Head>{" "}
+          <title> My page </title>
+          {/* Step 5: Output the styles in the head  */} {this.props.styleTags}
+        </Head>
         <body>
           <Main />
           <NextScript />
-        </body>{" "}
+        </body>
       </html>
     );
   }

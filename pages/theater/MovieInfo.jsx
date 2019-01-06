@@ -32,12 +32,10 @@ const MovieInfo = ({ movies }) => {
   return (
     <MovieWrapper>
       <Header>
-        {" "}
         {movies && movies.length > 0 && movies[0].CinemaNameKR}
-        영화목록{" "}
-      </Header>{" "}
+        영화목록
+      </Header>
       <Typography component="p">
-        {" "}
         {movies.map(movie => {
           return (
             <CardWrapper>
@@ -51,21 +49,19 @@ const MovieInfo = ({ movies }) => {
                     variant="outlined"
                     color="primary"
                   >
-                    {" "}
-                    {movie.MovieNameKR}({movie.MovieNameUS}){" "}
-                  </Button>{" "}
+                    {movie.MovieNameKR}({movie.MovieNameUS})
+                  </Button>
                   <p>
-                    {" "}
-                    {movie.StartTime}~{movie.EndTime}{" "}
-                  </p>{" "}
-                  <p> 이용등급: {movie.ViewGradeNameKR} </p>{" "}
-                  <p> 남은좌석: {movie.BookingSeatCount} </p>{" "}
-                </CardContent>{" "}
-              </Card>{" "}
+                    {movie.StartTime}~{movie.EndTime}
+                  </p>
+                  <p> 이용등급: {movie.ViewGradeNameKR} </p>
+                  <p> 남은좌석: {movie.BookingSeatCount} </p>
+                </CardContent>
+              </Card>
             </CardWrapper>
           );
-        })}{" "}
-      </Typography>{" "}
+        })}
+      </Typography>
     </MovieWrapper>
   );
 };
